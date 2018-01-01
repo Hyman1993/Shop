@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-11 18:41:27 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="shop.order.vo.Order" table="orders">
+        <id name="oid" type="java.lang.Integer">
+            <column name="oid" />
+            <generator class="native" />
+        </id>
+        <property name="orderTime" type="java.util.Date">
+            <column name="ordertime" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="addr" type="java.lang.String">
+            <column name="addr" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        
+              <!-- 关联关系 ：与用户的关系-->
+        <many-to-one name="user" lazy="false" class="shop.user.vo.User" >
+            <column name="uid" />
+        </many-to-one>
+        <!-- 关联关系 ：与订单项的关系-->
+        <set name="orderItems" order-by="itemid" cascade="save-update" lazy="false">
+            <key>
+                <column name="oid" />
+            </key>
+            <one-to-many class="shop.order.vo.OrderItem" />
+        </set>
+  
+   
+    </class>
+</hibernate-mapping>

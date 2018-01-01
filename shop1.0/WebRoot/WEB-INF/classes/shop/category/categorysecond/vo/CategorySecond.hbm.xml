@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-10 17:26:26 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="shop.category.categorysecond.vo.CategorySecond" table="categorysecond">
+        <id name="csid" type="java.lang.Integer">
+            <column name="csid" />
+            <generator class="native" />
+        </id>
+        <property name="csname" type="java.lang.String">
+            <column name="csname" />
+        </property>
+        <!-- 二级分类与一级分类的关联 -->
+        <many-to-one name="category" class="shop.category.vo.Category"  lazy="false">
+            <column name="cid" />
+        </many-to-one>
+        
+        <!-- 二级分类与商品的关联 -->
+       <set name="products">
+           <key column="csid"/>
+           <one-to-many class="shop.product.vo.Product"/>
+       </set> 
+    </class>
+</hibernate-mapping>

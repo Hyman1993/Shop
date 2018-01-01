@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-3-10 14:20:35 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="shop.product.vo.Product" table="product">
+        <id name="pid" type="java.lang.Integer">
+            <column name="pid" />
+            <generator class="native" />
+        </id>
+        <property name="pname" type="java.lang.String">
+            <column name="pname" />
+        </property>
+        <property name="market_price" type="java.lang.Double">
+            <column name="market_price" />
+        </property>
+        <property name="shop_price" type="java.lang.Double">
+            <column name="shop_price" />
+        </property>
+        <property name="image" type="java.lang.String">
+            <column name="image" />
+        </property>
+        <property name="pdesc" type="java.lang.String">
+            <column name="pdesc" />
+        </property>
+        <property name="is_hot" type="java.lang.Integer">
+            <column name="is_hot" />
+        </property>
+        <property name="pdate" type="java.util.Date">
+            <column name="pdate" />
+        </property>
+        
+        <many-to-one name="categorySecond" lazy="false" class="shop.category.categorysecond.vo.CategorySecond" column="csid"/>
+    </class>
+</hibernate-mapping>
